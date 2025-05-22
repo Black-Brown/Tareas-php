@@ -3,6 +3,7 @@ $nombre = "Jheinel";
 $apellido = "Brown";
 $foto = "img\IMG_20250330_131205_179.jpg";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@ $foto = "img\IMG_20250330_131205_179.jpg";
             <a class="social-icons" href="https://wa.me/18292140724" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
             </a>
-            <a class="social-icons" href="https://https://t.me/Jheinel Brown" target="_blank">
+            <a class="social-icons" href="https://https://t.me/JheinelBrown" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
             </a>
         </section>
