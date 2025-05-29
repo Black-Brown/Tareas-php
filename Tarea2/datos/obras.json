@@ -1,0 +1,20 @@
+[
+  {
+    "codigo": "OBRA001",
+    "foto_url": "assets/fotos/obra1.jpg",
+    "tipo": "Película",
+    "nombre": "El Viaje de Chihiro",
+    "descripcion": "Una niña se adentra en un mundo mágico para salvar a sus padres.",
+    "pais": "Japón",
+    "autor": "Hayao Miyazaki"
+  },
+  {
+    "codigo": "OBRA002",
+    "foto_url": "assets/fotos/obra2.jpg",
+    "tipo": "Serie",
+    "nombre": "Stranger Things",
+    "descripcion": "Un grupo de niños enfrenta fenómenos paranormales en su ciudad.",
+    "pais": "Estados Unidos",
+    "autor": "Hermanos Duffer"
+  }
+]

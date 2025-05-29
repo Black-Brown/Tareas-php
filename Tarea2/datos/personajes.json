@@ -1,0 +1,24 @@
+[
+  {
+    "cedula": "P001",
+    "foto_url": "assets/fotos/chihiro.jpg",
+    "nombre": "Chihiro",
+    "apellido": "Ogino",
+    "fecha_nacimiento": "2001-08-15",
+    "sexo": "Femenino",
+    "habilidades": "Valentía, Perseverancia, Adaptación",
+    "comida_favorita": "Bolas de arroz",
+    "obra_codigo": "OBRA001"
+  },
+  {
+    "cedula": "P002",
+    "foto_url": "assets/fotos/eleven.jpg",
+    "nombre": "Eleven",
+    "apellido": "",
+    "fecha_nacimiento": "2004-11-06",
+    "sexo": "Femenino",
+    "habilidades": "Telequinesis, Percepción extrasensorial",
+    "comida_favorita": "Waffles",
+    "obra_codigo": "OBRA002"
+  }
+]
