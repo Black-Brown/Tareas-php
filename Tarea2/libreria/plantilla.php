@@ -11,23 +11,27 @@ class Plantilla {
         return self::$instancia;
     }
 
-    public function __constructor() {
+    public function __construct() {
 
         ?>
-
         <!DOCTYPE html>
-        <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-            <title>Tarea2</title>
-        </head>
-        <body>
-            <h1>Mi lista</h1>
-            <div> 
-                <section>
-                    <div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Agrega Font Awesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Home</title>
+</head>
+<body class="container">  
+    <h1 class="text-center mt-5">
+        <a href="index.php" class="mt-4" >
+            <i class="fa-solid fa-house" style="color:rgb(0, 145, 255);" height="50px"></i>
+            Welcome to homework 2
+        </a>
+    </h1>
+
 
 <?php
         
@@ -36,11 +40,13 @@ class Plantilla {
     public function __destruct() {
 
         ?>
-         <div>
+        
+    <footer class="container text-center mt-5">
         <hr>
-        <footer>
-            <p>&copy; 2025 Tarea2</p>
-    </div>
+        <p>&copy; 2025 Jheinel Brown 2024-0017</p>
+        <p>Todos los derechos reservados.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

@@ -51,19 +51,29 @@ plantilla::aplicar();
                     <th>Autor</th>
                     <td><?php echo htmlspecialchars($obra->autor); ?></td>
                 </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <a href="editar.php?codigo=<?php echo urlencode($obra->codigo); ?>" class="btn btn-warning">Editar</a>
+                        <a href="personaje.php?codigo=<?php echo urlencode($obra->codigo); ?>" class="btn btn-success">Personajes</a>
+                        <a href="index.php" class="btn btn-primary">Volver al inicio</a>
+                    </td>
+                </tr>
             </table>
         </div>
         
         <!-- Personajes (derecha) -->
         <div class="col-md-7">
             <h2 class="bg-secondary text-white text-center p-2">Personajes de <?php echo htmlspecialchars($obra->nombre); ?></h2>
+            <div class="mb-3 text-end">
+                <a href="agregar_personaje.php?codigo=<?php echo $obra->codigo; ?>" class="btn btn-primary">Agregar Personaje</a>
+            </div>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Foto</th>
                         <th>Nombre</th>
                         <th>Habilidad</th>
-                        <th>Comida favorita</th>
+                        <th>Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,16 +84,14 @@ plantilla::aplicar();
                         echo "<td><img src='" . htmlspecialchars($personaje->foto_url) . "' alt='Foto' style='width: 100px;'></td>";
                         echo "<td>" . htmlspecialchars($personaje->nombre) . "</td>";
                         echo "<td>" . htmlspecialchars(is_array($personaje->habilidades) ? implode(', ', $personaje->habilidades) : $personaje->habilidades) . "</td>";
-                        echo "<td>" . htmlspecialchars($personaje->comida_favorita ?? '') . "</td>";
+                        echo "<td>
+                                <a href='eliminar_personaje.php?codigo=" . urlencode($obra->codigo) . "&cedula=" . urlencode($personaje->cedula) . "' class='btn btn-danger'>Eliminar</a>
+                             </td>";
                         echo "</tr>";
                     }
                     ?>
                 </tbody>
             </table>
-        </div>
-        <div class="col-md-12 text-center mt-4">
-            <a href="index.php" class="btn btn-primary">Volver al inicio</a>
-            <button onclick="window.print()" class="btn btn-info">Imprimir</button>
         </div>
     </div>
 </div>
