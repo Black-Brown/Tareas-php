@@ -1,1 +1,21 @@
-{"codigo":"123456789987","foto_url":"https:\/\/th.bing.com\/th\/id\/OIP.KvWY-Lps3p8FLMjUcFTK3wHaKz?w=118&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7","tipo":"Pel\u00edcula","nombre":"Inception ","descripcion":"Inception is a 2010 science fiction action heist film written and directed by Christopher Nolan, who also produced it with Emma Thomas, his wife. The film stars Leonardo DiCaprio as a professional thief who steals information by infiltrating the subconscious of his targets. He is offered a chance to have his criminal history erased as payment for the implantation of another person's idea into a target's subconscious. The ensemble cast includes Ken Watanabe, Joseph Gordon-Levitt, Marion Cotillard, Elliot Page,[a] Tom Hardy, Cillian Murphy, Tom Berenger, Dileep Rao, and Michael Caine.","pais":"United States","autor":"Christopher Nolan","personajes":[{"cedula":"INC-394-2025","foto_url":"https:\/\/i.pinimg.com\/originals\/70\/6e\/97\/706e97a190fa026e2acfb2d9283d0502.jpg","nombre":"Arthur","apellido":"Morgan","fecha_nacimiento":"1980-01-29","sexo":"Masculino","habilidades":"Experto en log\u00edstica y planificaci\u00f3n de sue\u00f1os\r\nGran investigador y estratega\r\nH\u00e1bil en combate cuerpo a cuerpo y manejo de armas","comida_favorita":"como caf\u00e9 y bocadillos"}]}
+{
+    "codigo": "123456789987",
+    "foto_url": "https:\/\/th.bing.com\/th\/id\/OIP.KvWY-Lps3p8FLMjUcFTK3wHaKz?w=118&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    "tipo": "Pel\u00edcula",
+    "nombre": "Inception ",
+    "descripcion": "Inception is a 2010 science fiction action heist film written and directed by Christopher Nolan, who also produced it with Emma Thomas, his wife. The film stars Leonardo DiCaprio as a professional thief who steals information by infiltrating the subconscious of his targets. He is offered a chance to have his criminal history erased as payment for the implantation of another person's idea into a target's subconscious. The ensemble cast includes Ken Watanabe, Joseph Gordon-Levitt, Marion Cotillard, Elliot Page,[a] Tom Hardy, Cillian Murphy, Tom Berenger, Dileep Rao, and Michael Caine.",
+    "pais": "United States",
+    "autor": "Christopher Nolan",
+    "personajes": [
+        {
+            "cedula": "INC-394-2025",
+            "foto_url": "https:\/\/i.pinimg.com\/originals\/70\/6e\/97\/706e97a190fa026e2acfb2d9283d0502.jpg",
+            "nombre": "Arthur",
+            "apellido": "Morgan",
+            "fecha_nacimiento": "1980-01-29",
+            "sexo": "Masculino",
+            "habilidades": "Experto en log\u00edstica y planificaci\u00f3n de sue\u00f1os\r\nGran investigador y estratega\r\nH\u00e1bil en combate cuerpo a cuerpo y manejo de armas",
+            "comida_favorita": "como caf\u00e9 y bocadillos"
+        }
+    ]
+}
