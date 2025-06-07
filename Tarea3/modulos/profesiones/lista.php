@@ -16,12 +16,12 @@ $profesiones = Dbx::listar('profesiones');
     </div>
 
     <div class="table-responsive w-75">
-        <table class="table table-bordered text-center align-middle">
-            <thead class="table-dark">
+        <table class="table table-striped table-bordered text-center align-middle">
+            <thead class="">
                 <tr>
                     <th>Nombre de la Profesión</th>
                     <th>Categoría</th>
-                    <td>Accion</td>
+                    <th>Accion</th>
                 </tr>
             </thead>
             <tbody>

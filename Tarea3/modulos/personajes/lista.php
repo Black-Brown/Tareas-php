@@ -14,14 +14,14 @@ $personajes = Dbx::listar('personaje');
     </div>
 
     <div class="table-responsive w-75">
-        <table class="table table-bordered text-center align-middle">
-            <thead class="table-dark">
+        <table class="table table-striped table-bordered text-center align-middle">
+            <thead>
                 <tr>
                     <th>Foto</th>
                     <th>Nombre</th>
                     <th>Profesión</th>
                     <th>Edad</th>
-                    <td>Acción</td>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
