@@ -1,1 +1,21 @@
-{"codigo":"789456123","foto_url":"https:\/\/cdn-images-1.medium.com\/max\/1200\/1*9EFTqm3bUKjvkHBGf2s4Lw.jpeg","tipo":"Pel\u00edcula","nombre":" Harry Potter and the Philosopher's Stone","descripcion":"Harry Potter y la Piedra Filosofal presenta a un ni\u00f1o hu\u00e9rfano que vive bajo la escalera de sus crueles t\u00edos, hasta que un gigante llamado Hagrid le revela que es un mago. As\u00ed comienza el viaje de Harry a Hogwarts, donde conocer\u00e1 a sus inseparables amigos Ron y Hermione, al sabio Dumbledore y al peligro acechante de un enemigo que todos temen nombrar. Primera entrega de la saga m\u00e1gica por excelencia.","pais":"United Kingdom","autor":"Chris Columbus","personajes":[{"cedula":"HP-394-2025","foto_url":"https:\/\/infomercado.pe\/wp-content\/uploads\/2023\/04\/Harry-Potter-serie.jpg","nombre":"Harry ","apellido":"Potter","fecha_nacimiento":"1985-10-31","sexo":"Masculino","habilidades":"Maestro en encantamientos avanzados\r\nExperto en pociones raras\r\nPuede comunicarse con criaturas m\u00e1gicas","comida_favorita":"Pastel de calabaza"}]}
+{
+    "codigo": "789456123",
+    "foto_url": "https:\/\/cdn-images-1.medium.com\/max\/1200\/1*9EFTqm3bUKjvkHBGf2s4Lw.jpeg",
+    "tipo": "Pel\u00edcula",
+    "nombre": " Harry Potter and the Philosopher's Stone",
+    "descripcion": "Harry Potter y la Piedra Filosofal presenta a un ni\u00f1o hu\u00e9rfano que vive bajo la escalera de sus crueles t\u00edos, hasta que un gigante llamado Hagrid le revela que es un mago. As\u00ed comienza el viaje de Harry a Hogwarts, donde conocer\u00e1 a sus inseparables amigos Ron y Hermione, al sabio Dumbledore y al peligro acechante de un enemigo que todos temen nombrar. Primera entrega de la saga m\u00e1gica por excelencia.",
+    "pais": "United Kingdom",
+    "autor": "Chris Columbus",
+    "personajes": [
+        {
+            "cedula": "HP-394-2025",
+            "foto_url": "https:\/\/infomercado.pe\/wp-content\/uploads\/2023\/04\/Harry-Potter-serie.jpg",
+            "nombre": "Harry ",
+            "apellido": "Potter",
+            "fecha_nacimiento": "1985-10-31",
+            "sexo": "Masculino",
+            "habilidades": "Maestro en encantamientos avanzados\r\nExperto en pociones raras\r\nPuede comunicarse con criaturas m\u00e1gicas",
+            "comida_favorita": "Pastel de calabaza"
+        }
+    ]
+}
