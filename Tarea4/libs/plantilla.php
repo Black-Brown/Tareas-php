@@ -24,6 +24,22 @@ class plantilla {
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Tarea 4</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .main-content {
+            flex: 1 0 auto;
+        }
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-3">
@@ -65,25 +81,26 @@ class plantilla {
                 <a class="nav-link <?php echo (defined('tabs') && constant('tabs') === 'Acerca de') ? 'active' : ''; ?>" href="/modulos/acerca_de.php">Acerca de</a>
             </li>
         </ul>
-    </div>        
+    </div>
+    <div class="main-content">        
         <?php
 
     }
 
     public function __destruct(){
         ?>
-
-<div class="container">
-    <footer class="text-center mt-5">
-    <hr>
-    <p>&copy; Jheinel Brown matricula 2024-0017</p>
-    <p> Que todos los derechos esta reservados son mios EH XD</p>
-</footer>
-</div>
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+        </div>
+        <div class="container mt-5">
+            <footer class="text-center">
+                <hr>
+                <p>&copy; Jheinel Brown matricula 2024-0017</p>
+                <p>Que todos los derechos esta reservados son mios EH XD</p>
+            </footer>
+        </div>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        </body>
+        </html>
 
         <?php
 
