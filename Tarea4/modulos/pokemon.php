@@ -2,7 +2,7 @@
 define('tabs', 'Pokemon');
 require("../libs/index.php");
 
-$pokemon = null;
+$pokemon = [];
 $nombre = '';
 $error = '';
 
@@ -33,8 +33,8 @@ plantilla::aplicar();
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg border-0">
-                <div class="card-header bg-info text-white text-center">
-                    <h4 class="mb-0">Pokémon</h4>
+                <div class="card-header bg-danger text-white text-center">
+                    <h4 class="mb-0"><i class="fa-solid fa-paw"></i> Pokémon</h4>
                 </div>
                 <div class="card-body">
                     <form action="pokemon.php" method="post">

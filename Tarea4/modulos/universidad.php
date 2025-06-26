@@ -34,8 +34,8 @@ plantilla::aplicar();
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg border-0">
-                <div class="card-header bg-info text-white text-center">
-                    <h4 class="mb-0">Información de Universidades</h4>
+                <div class="card-header bg-black text-white text-center">
+                    <h4 class="mb-0"><i class="fa-solid fa-university"></i> Información de Universidades</h4>
                 </div>
                 <div class="card-body">
                     <form action="universidad.php" method="post">

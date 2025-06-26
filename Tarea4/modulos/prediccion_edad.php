@@ -47,7 +47,7 @@ plantilla::aplicar();
         <div class="col-md-6">
             <div class="card shadow-lg border-0">
                 <div class="card-header bg-info text-white text-center">
-                    <h4 class="mb-0">Predicción de Edad</h4>
+                    <h4 class="mb-0"><i class="fa-solid fa-calendar-alt"></i> Predicción de Edad</h4>
                 </div>
                 <div class="card-body">
                     <form action="prediccion_edad.php" method="post">
