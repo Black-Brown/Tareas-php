@@ -25,7 +25,6 @@ if ($respuesta !== false) {
         $temperatura = $data['main']['temp'];
         $icono = "https://openweathermap.org/img/wn/" . $data['weather'][0]['icon'] . "@2x.png";
 
-        // Determinar el emoji basado en la descripción del clima
         switch ($clima) {
             case 'clear sky':
                 $emoji = '☀️';
@@ -72,8 +71,8 @@ plantilla::aplicar();
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg border-0">
-                <div class="card-header bg-info text-white text-center">
-                    <h4 class="mb-0">Predicción del Clima</h4>
+                <div class="card-header bg-warning text-center">
+                    <h4 class="mb-0"><i class="fa-solid fa-cloud-sun"></i> Predicción del Clima</h4>
                 </div>
                 <div class="card-body">
                     <form action="prediccion_clima.php" method="post">

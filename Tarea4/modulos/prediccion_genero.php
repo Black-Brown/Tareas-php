@@ -2,6 +2,9 @@
 define('tabs', 'Genero');
 require("../libs/index.php");
 
+$genero = null;
+$probabilidad = null;
+$error = '';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre =$_POST['nombre'];
@@ -28,8 +31,8 @@ plantilla::aplicar();
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg border-0">
-                <div class="card-header bg-info text-white text-center">
-                    <h4 class="mb-0">Predicción de Género</h4>
+                <div class="card-header bg-pink text-white text-center">
+                    <h4 class="mb-0"><i class="fa fa-venus-mars"></i> Predicción de Género</h4>
                 </div>
                 <div class="card-body">
                     <form action="prediccion_genero.php" method="post">
