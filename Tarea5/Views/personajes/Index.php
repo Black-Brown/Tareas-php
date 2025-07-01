@@ -53,13 +53,16 @@ Plantilla::aplicar();
                     <td><?php echo $personaje['nivel']; ?></td>
                     <td>
                         <a href="edit.php?id=<?php echo $personaje['id']; ?>" class="btn btn-primary">
-                            <i class="fas fa-edit"></i> Editar
+                            <i class="fas fa-edit"></i>
                         </a>
                         <a href="details.php?id=<?php echo $personaje['id']; ?>" class="btn btn-primary">
-                            <i class="fas fa-info-circle"></i> Mas Informacion
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <a href="download_pdf.php?id=<?= urlencode($personaje['id']) ?>" class="btn btn-warning" target="_blank">
+                            <i class="fa-solid fa-file-pdf"></i>
                         </a>
                         <a href="delete.php?id=<?php echo $personaje['id']; ?>" class="btn btn-danger">
-                            <i class="fas fa-trash-alt"></i> Eliminar
+                            <i class="fas fa-trash-alt"></i> 
                         </a>                        
                     </td>
                 </tr>

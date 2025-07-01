@@ -2,6 +2,7 @@
 define('tabs', 'Personajes');
 require('../../libs/index.php');
 require_once(__DIR__ . '/../../config/db_config.php');
+require_once(__DIR__ . '/../../Models/personaje.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];

@@ -48,14 +48,6 @@ define('DB_PASS', '$pass');
 define('DB_NAME', '$dbname');
 ";
                 file_put_contents($configFile, $configContent);
-                
-                // Redireccionar automáticamente después de la instalación exitosa
-                if (file_exists(__DIR__ . '/index.php')) {
-                    header('Location: index.php');
-                } else {
-                    echo "ERROR: index.php no existe en la ruta actual: " . __DIR__;
-                }
-                exit();
             } else {
                 $error = "No se pudo crear la tabla: " . $conn->error;
                 $showForm = true;
