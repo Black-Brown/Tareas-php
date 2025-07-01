@@ -76,7 +76,7 @@ class Plantilla
                 <p>
                     <i class="fa-solid fa-book text-primary"></i>
                     <span style="font-family: 'Comic Sans MS', cursive, sans-serif;">
-                        <a href="install.php" class="text-decoration-none text-primary">
+                        <a href="/install.php" class="text-decoration-none text-primary">
                             Guía de Instalación de la BD
                         </a>
                     </span>

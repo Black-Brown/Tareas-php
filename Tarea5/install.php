@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dbname = $_POST['dbname'];
 
     try {
-        // Intentar conectar al servidor MySQL (sin base de datos)
         $conn = new mysqli($host, $user, $pass);
         // Intentar seleccionar la base de datos
         try {
@@ -52,7 +51,7 @@ define('DB_NAME', '$dbname');
                 
                 // Redireccionar automáticamente después de la instalación exitosa
                 if (file_exists(__DIR__ . '/index.php')) {
-                    header('Location: index.php'); // CORREGIDO: Sin barra inicial
+                    header('Location: index.php');
                 } else {
                     echo "ERROR: index.php no existe en la ruta actual: " . __DIR__;
                 }
@@ -72,7 +71,6 @@ define('DB_NAME', '$dbname');
     if (!file_exists($configFile)) {
         $showForm = true;
     } else {
-        // Verificar conexión y existencia de la tabla
         require_once($configFile);
         try {
             // Cambiar el nivel de reporte para evitar excepciones por warnings menores
@@ -89,7 +87,7 @@ define('DB_NAME', '$dbname');
                 $error = "La tabla 'personajes' no existe. Por favor, completa la instalación.";
                 $showForm = true;
             } else {
-                $showForm = false; // Todo está bien, no mostrar el formulario
+                $showForm = false;
             }
             $conn->close();
         } catch (Exception $e) {
