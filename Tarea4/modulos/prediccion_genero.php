@@ -5,6 +5,7 @@ require("../libs/index.php");
 $genero = null;
 $probabilidad = null;
 $error = '';
+$nombre = ''; // Inicializa $nombre para evitar el warning
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre =$_POST['nombre'];
