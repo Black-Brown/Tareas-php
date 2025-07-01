@@ -35,6 +35,11 @@ class Plantilla
                     <i class="fa-solid fa-user-ninja"></i> Personajes
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link <?php echo (defined('tabs') && constant('tabs') === 'Acerca de') ? 'active' : ''; ?>" href="/Views/acerca_de/index.php">
+                    <i class="fa-solid fa-circle-info"></i> Acerca de
+                </a>
+            </li>
         </ul>
     </div>
 <div class="main-content">
@@ -67,6 +72,15 @@ class Plantilla
                     <span style="font-family: 'Comic Sans MS', cursive, sans-serif;">
                         Powered by <b>Otaku Energy</b> <i class="fa-solid fa-bolt"></i>
                     </span>
+                </p>
+                <p>
+                    <i class="fa-solid fa-book text-primary"></i>
+                    <span style="font-family: 'Comic Sans MS', cursive, sans-serif;">
+                        <a href="install.php" class="text-decoration-none text-primary">
+                            Guía de Instalación de la BD
+                        </a>
+                    </span>
+                    <i class="fa-solid fa-book text-primary"></i>
                 </p>
             </footer>
         </div>
