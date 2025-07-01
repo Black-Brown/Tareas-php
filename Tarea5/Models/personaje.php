@@ -13,13 +13,13 @@ class Personaje {
     }
 
     public function obtenerPersonajes() {
-        $sql = "SELECT * FROM personaje";
+        $sql = "SELECT * FROM personajes";
         $result = $this->conn->query($sql);
         return $result;
     }
 
     public function obtenerPersonajePorId($id) {
-        $sql = "SELECT * FROM personaje WHERE id = ?";
+        $sql = "SELECT * FROM personajes WHERE id = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
@@ -28,21 +28,21 @@ class Personaje {
     }
 
     public function crearPersonaje($nombre, $tipo, $color, $nivel, $foto) {
-        $sql = "INSERT INTO personaje (nombre, tipo, color, nivel, foto) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO personajes (nombre, tipo, color, nivel, foto) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("sssis", $nombre, $tipo, $color, $nivel, $foto);
         return $stmt->execute();
     }
 
     public function editarPersonaje($id, $nombre, $tipo, $color, $nivel, $foto) {
-        $sql = "UPDATE personaje SET nombre = ?, tipo = ?, color = ?, nivel = ?, foto = ? WHERE id = ?";
+        $sql = "UPDATE personajes SET nombre = ?, tipo = ?, color = ?, nivel = ?, foto = ? WHERE id = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("sssisi", $nombre, $tipo, $color, $nivel, $foto, $id);
         return $stmt->execute();
     }
 
     public function eliminarPersonaje($id) {
-        $sql = "DELETE FROM personaje WHERE id = ?";
+        $sql = "DELETE FROM personajes WHERE id = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $id);
         return $stmt->execute();
