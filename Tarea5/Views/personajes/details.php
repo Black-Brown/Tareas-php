@@ -1,7 +1,21 @@
 <?php
+if (!file_exists(__DIR__ . '/../../config/db_config.php')) {
+    header('Location: /../../install.php');
+    exit();
+} else {
+    require_once(__DIR__ . '/../../config/db_config.php');
+    try {
+        mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ALL);
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $conn->close();
+    } catch (mysqli_sql_exception $e) {
+        header('Location: /../../install.php');
+        exit();
+    }
+}
+
 define('tabs', 'Personajes');
 require('../../libs/index.php');
-require_once(__DIR__ . '/../../config/db_config.php');
 require_once(__DIR__ . '/../../Models/personaje.php');
 
 $personajeModel = new Personaje();
