@@ -1,0 +1,2 @@
+<?php 
+require('plantilla.php');
