@@ -5,7 +5,7 @@ define('DB_PASS', '');
 define('DB_NAME', 'db_visitas');
 
 class database {
-
+    // conexion a la base de datos 
     private $conn;
 
     public function __construct(){
@@ -15,7 +15,7 @@ class database {
         }
     }
 
-
+    // funcion para obtener la conexion de la DB
     public function obtenerDB(){
         return $this->conn;
     }
