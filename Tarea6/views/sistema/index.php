@@ -1,9 +1,11 @@
 <?php
 require __DIR__ . "/../../config/database.php";
-require __DIR__ . "/../../models/sistemaModel.php";
+require __DIR__ . "/../../models/facturaModel.php";
+require __DIR__ . "/../../models/clienteModel.php";
+
 session_start();
 
-$modelo = new SistemaModelo();
+$modelo = new FacturaModel();
 $productosDisponibles = $modelo->obtenerProductos();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['guardar'])) {
