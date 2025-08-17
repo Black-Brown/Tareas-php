@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="libs/style.css">
+    <title>IncidenciasRD - Sistema de Reporte Nacional</title>
+</head>
+<body>
+    <!-- Pantalla de Login -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-card fade-in">
+            <div class="logo">
+                <h1>IncidenciasRD <span class="rd-flag"></span></h1>
+                <p>Sistema Nacional de Reporte de Incidencias</p>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <p style="color: #666; font-size: 0.9em;">Accede con tu cuenta de Gmail o Microsoft</p>
+            </div>
+            
+            <button class="btn btn-google" onclick="loginWithGoogle()">
+                📧 Continuar con Gmail
+            </button>
+            
+            <button class="btn btn-microsoft" onclick="loginWithMicrosoft()">
+                🏢 Continuar con Office 365
+            </button>
+            
+            <div class="divider">
+                <span>o</span>
+            </div>
+            
+            <button class="btn" onclick="showValidatorLogin()" style="background: #2d3748;">
+                🔒 Acceso para Validadores
+            </button>
+        </div>
+    </div>
+
+    <!-- Login de Validador -->
+    <div id="validatorLoginScreen" class="login-screen hidden">
+        <div class="login-card">
+            <div class="logo">
+                <h1>Panel Validador</h1>
+                <p>Acceso Restringido - Solo Personal Autorizado</p>
+            </div>
+            
+            <form id="validatorLoginForm">
+                <div class="form-group">
+                    <label for="validatorUser">Usuario</label>
+                    <input type="text" id="validatorUser" name="user" placeholder="admin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="validatorPassword">Contraseña</label>
+                    <input type="password" id="validatorPassword" name="password" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn">Acceder al Panel</button>
+                
+                <button type="button" class="btn" style="background: #6c757d;" onclick="showLogin()">
+                    ← Volver al Login Principal
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pantalla Principal -->
+    <div id="mainScreen" class="main-screen">
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="nav-logo">
+                    IncidenciasRD <span class="rd-flag"></span>
+                </div>
+                <div class="nav-links">
+                    <a class="nav-link active" onclick="showDashboard()">Mapa Principal</a>
+                    <a class="nav-link" onclick="showIncidentsList()">Lista de Incidencias</a>
+                    <a class="nav-link" onclick="showReportForm()">Reportar Incidencia</a>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar">MR</div>
+                    <span>María Rodríguez</span>
+                    <button class="btn" style="padding: 8px 16px; margin: 0; width: auto;" onclick="logout()">Salir</button>
+                </div>
+            </div>
+        </nav>
+
+        <div style="max-width: 1200px; margin: 0 auto; padding: 30px 20px;">
+            <!-- Filtros -->
+            <div class="filters-section">
+                <h3 style="margin-bottom: 20px; color: #333;">Filtros de Búsqueda</h3>
+                <div class="filters-grid">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Buscar por título de incidencia..." id="searchInput">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <div class="form-group">
+                        <select id="provinceFilter">
+                            <option value="">Todas las Provincias</option>
+                            <option value="distrito-nacional">Distrito Nacional</option>
+                            <option value="santo-domingo">Santo Domingo</option>
+                            <option value="santiago">Santiago</option>
+                            <option value="la-vega">La Vega</option>
+                            <option value="san-cristobal">San Cristóbal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="typeFilter">
+                            <option value="">Todos los Tipos</option>
+                            <option value="accidente">Accidente</option>
+                            <option value="robo">Robo</option>
+                            <option value="pelea">Pelea</option>
+                            <option value="desastre">Desastre Natural</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="dateFilter" value="2024-08-17">
+                    </div>
+                </div>
+                <button class="btn" style="width: auto; padding: 10px 20px;" onclick="applyFilters()">
+                    Aplicar Filtros
+                </button>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon stat-accidents">🚗</div>
+                    <div class="stat-number">23</div>
+                    <div class="stat-label">Accidentes (24h)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon stat-robberies">🔫</div>
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Robos (24h)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon stat-disasters">🌀</div>
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Desastres (24h)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon stat-fights">👊</div>
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Peleas (24h)</div>
+                </div>
+            </div>
+
+            <!-- Mapa Principal -->
+            <div class="map-container">
+                <div class="map-placeholder">
+                    🗺️ Mapa Interactivo de República Dominicana
+                    <br><small>Incidencias de las últimas 24 horas</small>
+                </div>
+                
+                <!-- Marcadores simulados -->
+                <div class="map-marker marker-accidente" onclick="showIncidentModal('accident1')" title="Accidente de tránsito">🚗</div>
+                <div class="map-marker marker-robo" onclick="showIncidentModal('robbery1')" title="Robo a mano armada">🔫</div>
+                <div class="map-marker marker-desastre" onclick="showIncidentModal('disaster1')" title="Inundación">🌊</div>
+                <div class="map-marker marker-pelea" onclick="showIncidentModal('fight1')" title="Riña callejera">👊</div>
+                
+                <div class="map-controls">
+                    <button class="map-btn" onclick="toggleMapView()" title="Vista satelital">🛰️</button>
+                    <button class="map-btn" onclick="centerMap()" title="Centrar mapa">📍</button>
+                    <button class="map-btn" onclick="toggleClustering()" title="Agrupar marcadores">📊</button>
+                </div>
+            </div>
+
+            <!-- Lista de Incidencias Recientes -->
+            <div class="incidents-section">
+                <div class="section-header">
+                    <h2>Incidencias Recientes (Últimas 24 Horas)</h2>
+                    <button class="btn-new" onclick="showReportForm()">+ Reportar Nueva Incidencia</button>
+                </div>
+
+                <div id="incidentsList">
+                    <div class="incident-card" onclick="showIncidentModal('accident1')">
+                        <div class="incident-header">
+                            <span class="incident-type type-accidente">Accidente</span>
+                            <span style="color: #666; font-size: 0.9em;">Hace 2 horas</span>
+                        </div>
+                        <div class="incident-title">Choque múltiple en Autopista Duarte</div>
+                        <p style="color: #666; margin-bottom: 10px;">Accidente de tránsito involucra 3 vehículos en la autopista, generando tapón vehicular extenso.</p>
+                        <div class="incident-meta">
+                            <span class="incident-location">📍 Santiago, Autopista Duarte KM 45</span>
+                            <span>💀 2 muertos</span>
+                            <span>🏥 5 heridos</span>
+                            <span>💰 RD$ 2.5M en pérdidas</span>
+                        </div>
+                    </div>
+
+                    <div class="incident-card" onclick="showIncidentModal('robbery1')">
+                        <div class="incident-header">
+                            <span class="incident-type type-robo">Robo</span>
+                            <span style="color: #666; font-size: 0.9em;">Hace 4 horas</span>
+                        </div>
+                        <div class="incident-title">Asalto a banco en Zona Colonial</div>
+                        <p style="color: #666; margin-bottom: 10px;">Individuos armados asaltan sucursal bancaria durante horario comercial.</p>
+                        <div class="incident-meta">
+                            <span class="incident-location">📍 Distrito Nacional, Zona Colonial</span>
+                            <span>💀 0 muertos</span>
+                            <span>🏥 2 heridos</span>
+                            <span>💰 RD$ 8.7M robados</span>
+                        </div>
+                    </div>
+
+                    <div class="incident-card" onclick="showIncidentModal('disaster1')">
+                        <div class="incident-header">
+                            <span class="incident-type type-desastre">Desastre</span>
+                            <span style="color: #666; font-size: 0.9em;">Hace 6 horas</span>
+                        </div>
+                        <div class="incident-title">Inundaciones en La Vega por lluvias intensas</div>
+                        <p style="color: #666; margin-bottom: 10px;">Fuertes precipitaciones causan desbordamiento del río Camú, afectando varios barrios.</p>
+                        <div class="incident-meta">
+                            <span class="incident-location">📍 La Vega, Sector Los Almácigos</span>
+                            <span>💀 1 muerto</span>
+                            <span>🏥 12 heridos</span>
+                            <span>💰 RD$ 15.2M en pérdidas</span>
+                        </div>
+                    </div>
+
+                    <div class="incident-card" onclick="showIncidentModal('fight1')">
+                        <div class="incident-header">
+                            <span class="incident-type type-pelea">Pelea</span>
+                            <span style="color: #666; font-size: 0.9em;">Hace 8 horas</span>
+                        </div>
+                        <div class="incident-title">Riña entre grupos en parque público</div>
+                        <p style="color: #666; margin-bottom: 10px;">Enfrentamiento violento entre jóvenes en parque de San Cristóbal durante evento deportivo.</p>
+                        <div class="incident-meta">
+                            <span class="incident-location">📍 San Cristóbal, Parque Central</span>
+                            <span>💀 0 muertos</span>
+                            <span>🏥 7 heridos</span>
+                            <span>💰 RD$ 45,000 en daños</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de Reportar Incidencia -->
+    <div id="reportScreen" class="report-screen">
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="nav-logo">IncidenciasRD <span class="rd-flag"></span></div>
+                <div class="nav-links">
+                    <a class="nav-link" onclick="showDashboard()">Mapa Principal</a>
+                    <a class="nav-link" onclick="showIncidentsList()">Lista de Incidencias</a>
+                    <a class="nav-link active">Reportar Incidencia</a>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar">MR</div>
+                    <span>María Rodríguez</span>
+                    <button class="btn" style="padding: 8px 16px; margin: 0; width: auto;" onclick="logout()">Salir</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="report-form">
+            <div class="form-card">
+                <h2 style="text-align: center; color: #1e3c72; margin-bottom: 30px;">
+                    📝 Reportar Nueva Incidencia
+                </h2>
+                
+                <form id="reportIncidentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="incidentDate">Fecha de Ocurrencia *</label>
+                            <input type="datetime-local" id="incidentDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentTitle">Título de la Incidencia *</label>
+                            <input type="text" id="incidentTitle" placeholder="Ej: Accidente de tránsito en..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-full">
+                        <label>Tipo de Incidencia * (Puede seleccionar varios)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="typeAccident" name="incidentType" value="accidente">
+                                <label for="typeAccident">🚗 Accidente</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="typeRobbery" name="incidentType" value="robo">
+                                <label for="typeRobbery">🔫 Robo</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="typeFight" name="incidentType" value="pelea">
+                                <label for="typeFight">👊 Pelea</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="typeDisaster" name="incidentType" value="desastre">
+                                <label for="typeDisaster">🌀 Desastre Natural</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-full">
+                        <label for="incidentDescription">Descripción Detallada *</label>
+                        <textarea id="incidentDescription" rows="4" placeholder="Describa lo ocurrido con el mayor detalle posible..." required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="incidentProvince">Provincia *</label>
+                            <select id="incidentProvince" required onchange="updateMunicipalities()">
+                                <option value="">Seleccione una provincia</option>
+                                <option value="distrito-nacional">Distrito Nacional</option>
+                                <option value="santo-domingo">Santo Domingo</option>
+                                <option value="santiago">Santiago</option>
+                                <option value="la-vega">La Vega</option>
+                                <option value="san-cristobal">San Cristóbal</option>
+                                <option value="puerto-plata">Puerto Plata</option>
+                                <option value="la-romana">La Romana</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentMunicipality">Municipio *</label>
+                            <select id="incidentMunicipality" required onchange="updateNeighborhoods()">
+                                <option value="">Primero seleccione provincia</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-full">
+                        <label for="incidentNeighborhood">Barrio/Sector</label>
+                        <select id="incidentNeighborhood">
+                            <option value="">Primero seleccione municipio</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="incidentLat">Latitud</label>
+                            <input type="number" id="incidentLat" step="0.000001" placeholder="Ej: 18.4861">
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentLng">Longitud</label>
+                            <input type="number" id="incidentLng" step="0.000001" placeholder="Ej: -69.9312">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="incidentDeaths">Número de Muertos</label>
+                            <input type="number" id="incidentDeaths" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentInjured">Número de Heridos</label>
+                            <input type="number" id="incidentInjured" min="0" value="0">
+                        </div>
+                    </div>
+
+                    <div class="form-group form-full">
+                        <label for="incidentLoss">Pérdida Estimada (RD$)</label>
+                        <input type="number" id="incidentLoss" min="0" step="1000" placeholder="Ej: 250000">
+                    </div>
+
+                    <div class="form-group form-full">
+                        <label for="socialMediaLink">Link a Redes Sociales (Opcional)</label>
+                        <input type="url" id="socialMediaLink" placeholder="https://twitter.com/... o https://facebook.com/...">
+                    </div>
+
+                    <div class="form-group form-full">
+                        <label for="incidentPhoto">Foto del Hecho (Opcional)</label>
+                        <input type="file" id="incidentPhoto" accept="image/*">
+                        <small style="color: #666; display: block; margin-top: 5px;">
+                            Formatos aceptados: JPG, PNG, GIF. Máximo 5MB.
+                        </small>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button type="submit" class="btn" style="width: auto; padding: 15px 40px; font-size: 18px;">
+                            📤 Enviar Reporte para Validación
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel de Validador -->
+    <div id="validatorScreen" class="validator-screen">
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="nav-logo">Panel Validador - IncidenciasRD</div>
+                <div class="nav-links">
+                    <a class="nav-link active" onclick="showValidatorDashboard()">Reportes Pendientes</a>
+                    <a class="nav-link" onclick="showStatistics()">Estadísticas</a>
+                    <a class="nav-link" onclick="showCatalogs()">Gestión de Catálogos</a>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar">AD</div>
+                    <span>Administrador</span>
+                    <button class="btn" style="padding: 8px 16px; margin: 0; width: auto;" onclick="logout()">Salir</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="validator-content">
+            <div class="validator-tabs">
+                <button class="tab-btn active" onclick="showTab('pending')">
+                    📋 Reportes Pendientes (12)
+                </button>
+                <button class="tab-btn" onclick="showTab('approved')">
+                    ✅ Aprobados Hoy (8)
+                </button>
+                <button class="tab-btn" onclick="showTab('corrections')">
+                    ✏️ Correcciones (3)
+                </button>
+            </div>
+
+            <div id="pendingTab" class="pending-reports">
+                <h3 style="margin-bottom: 20px; color: #333;">Reportes Esperando Validación</h3>
+                
+                <div class="report-item">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                        <div>
+                            <h4 style="color: #1e3c72;">Choque en Circunvalación Norte</h4>
+                            <p style="color: #666; margin: 5px 0;">Reportado por: carlos.martinez@gmail.com</p>
+                            <span class="incident-type type-accidente">Accidente</span>
+                        </div>
+                        <span style="color: #666; font-size: 0.9em;">Hace 15 min</span>
+                    </div>
+                    <p style="margin-bottom: 10px;">Colisión frontal entre dos vehículos en la Circunvalación Norte, altura del puente de la 27 de Febrero.</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 15px; font-size: 0.9em;">
+                        <span>📍 Distrito Nacional</span>
+                        <span>💀 1 muerto</span>
+                        <span>🏥 3 heridos</span>
+                        <span>💰 RD$ 800,000</span>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn-approve" onclick="approveReport(1)">✅ Aprobar</button>
+                        <button class="btn-edit" onclick="editReport(1)">✏️ Editar</button>
+                        <button class="btn-reject" onclick="rejectReport(1)">❌ Rechazar</button>
+                    </div>
+                </div>
+
+                <div class="report-item">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                        <div>
+                            <h4 style="color: #1e3c72;">Asalto en Supermercado</h4>
+                            <p style="color: #666; margin: 5px 0;">Reportado por: ana.rodriguez@hotmail.com</p>
+                            <span class="incident-type type-robo">Robo</span>
+                        </div>
+                        <span style="color: #666; font-size: 0.9em;">Hace 32 min</span>
+                    </div>
+                    <p style="margin-bottom: 10px;">Individuos armados asaltan supermercado en horario nocturno llevándose efectivo y mercancía.</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 15px; font-size: 0.9em;">
+                        <span>📍 Santiago</span>
+                        <span>💀 0 muertos</span>
+                        <span>🏥 1 herido</span>
+                        <span>💰 RD$ 1,200,000</span>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn-approve" onclick="approveReport(2)">✅ Aprobar</button>
+                        <button class="btn-edit" onclick="editReport(2)">✏️ Editar</button>
+                        <button class="btn-reject" onclick="rejectReport(2)">❌ Rechazar</button>
+                    </div>
+                </div>
+
+                <div class="report-item">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                        <div>
+                            <h4 style="color: #1e3c72;">Deslizamiento de Tierra</h4>
+                            <p style="color: #666; margin: 5px 0;">Reportado por: miguel.santos@outlook.com</p>
+                            <span class="incident-type type-desastre">Desastre</span>
+                        </div>
+                        <span style="color: #666; font-size: 0.9em;">Hace 1 hora</span>
+                    </div>
+                    <p style="margin-bottom: 10px;">Deslizamiento de tierra bloquea carretera principal afectando varias viviendas en la zona montañosa.</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 15px; font-size: 0.9em;">
+                        <span>📍 La Vega</span>
+                        <span>💀 2 muertos</span>
+                        <span>🏥 8 heridos</span>
+                        <span>💰 RD$ 5,600,000</span>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn-approve" onclick="approveReport(3)">✅ Aprobar</button>
+                        <button class="btn-edit" onclick="editReport(3)">✏️ Editar</button>
+                        <button class="btn-reject" onclick="rejectReport(3)">❌ Rechazar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalles de Incidencia -->
+    <div id="incidentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Detalles de la Incidencia</h3>
+                <button class="close-btn" onclick="closeModal()">✖</button>
+            </div>
+            <div id="modalBody">
+                <!-- Contenido dinámico del modal -->
+            </div>
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #f1f5f9;">
+                <h4 style="margin-bottom: 15px;">💬 Comentarios Públicos</h4>
+                <div id="comments" style="margin-bottom: 20px;">
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+                        <strong>Juan Pérez:</strong> Confirmo que presencié el accidente, fue muy fuerte el impacto.
+                        <div style="color: #666; font-size: 0.9em; margin-top: 5px;">Hace 30 minutos</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="newComment" placeholder="Escribe tu comentario..." style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                    <button class="btn" onclick="addComment()" style="width: auto; padding: 10px 20px;">Comentar</button>
+                </div>
+            </div>
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #f1f5f9;">
+                <h4 style="margin-bottom: 15px;">✏️ Sugerir Corrección</h4>
+                <button class="btn" onclick="showCorrectionForm()" style="width: auto; padding: 10px 20px; background: #ed8936;">
+                    Sugerir Corrección
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="libs/main.js"></script>
+</body>
+</html>
